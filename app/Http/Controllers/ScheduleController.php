@@ -27,7 +27,10 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        // Scheduleのインスタンスを作成
+        $schedule = new Schedule();
+        $data = ['schedule' => $schedule];
+        return view('schedules.create', $data);
     }
 
     /**
@@ -38,7 +41,21 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // データベースに登録
+        $this->validate($request, [
+            'content' => 'required',
+            'place' => 'required',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date',
+        ]);
+        $schedule = new Schedule();
+        $schedule->content = $request->content;
+        $schedule->place = $request->place;
+        $schedule->start_time = $request->start_time;
+        $schedule->end_time = $request->end_time;
+        $schedule->save();
+
+        return redirect(route('schedules.index'));
     }
 
     /**
