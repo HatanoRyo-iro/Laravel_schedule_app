@@ -25,3 +25,5 @@ Route::post('/schedules', [ScheduleController::class, 'store'])->name('schedules
 
 Route::get('/schedules/{schedule}/edit', [ScheduleController::class, 'edit'])->name('schedules.edit');
 Route::patch('/schedules/{schedule}', [ScheduleController::class, 'update'])->name('schedules.update');
+
+Route::delete('/schedules/{schedule}',  [ScheduleController::class, 'destroy'])->name('schedules.destroy');

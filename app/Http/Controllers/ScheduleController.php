@@ -127,6 +127,8 @@ class ScheduleController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        //
+        // 削除
+        $schedule->delete();
+        return redirect(route('schedules.index'));
     }
 }

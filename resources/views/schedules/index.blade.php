@@ -10,6 +10,11 @@
     <div class="schedule-edit">
         <a href="{{ route('schedules.edit', $schedule) }}">編集</a>
     </div>
+    <form onsubmit="return confirm('本当に削除しますか？')" action="{{ route('schedules.destroy', $schedule) }}" method="post">
+        @csrf
+        @method('delete')
+        <button type="submit">削除</button>
+    </form>
 </article>
 @endforeach
 @endsection()
