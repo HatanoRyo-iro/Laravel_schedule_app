@@ -1,5 +1,6 @@
 @extends('templates.template')
 @section('contents')
+@include('display_errors.error')
 <form action="{{ route('schedules.store') }}" method="post">
     @csrf 
     <dl class="form-list">
