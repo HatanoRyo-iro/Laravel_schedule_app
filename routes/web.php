@@ -22,3 +22,6 @@ Route::get('/schedules', [ScheduleController::class, 'index'])->name('schedules.
 
 Route::get('/schedules/create', [ScheduleController::class, 'create'])->name('schedules.create');
 Route::post('/schedules', [ScheduleController::class, 'store'])->name('schedules.store');
+
+Route::get('/schedules/{schedule}/edit', [ScheduleController::class, 'edit'])->name('schedules.edit');
+Route::patch('/schedules/{schedule}', [ScheduleController::class, 'update'])->name('schedules.update');
