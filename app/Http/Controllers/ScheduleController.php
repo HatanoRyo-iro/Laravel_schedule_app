@@ -83,7 +83,9 @@ class ScheduleController extends Controller
      */
     public function edit(Schedule $schedule)
     {
-        //
+        // 編集
+        $data = ['schedule' => $schedule];
+        return view('schedules.edit', $data);
     }
 
     /**
@@ -95,7 +97,26 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, Schedule $schedule)
     {
-        //
+        // 更新
+        $this->validate($request, [
+            'content' => 'required',
+            'place' => 'required',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date|after:start_time',
+        ],[
+            'content.required' => '予定は必ず入力してください',
+            'place.required' => '場所は必ず入力してください',
+            'start_time.required' => '開始時間は必ず入力してください',
+            'end_time.required' => '終了時間は必ず入力してください',
+            'end_time.after' => '終了時間は開始時間より後の時刻を選択してください',
+        ]);
+        $schedule->content = $request->content;
+        $schedule->place = $request->place;
+        $schedule->start_time = $request->start_time;
+        $schedule->end_time = $request->end_time;
+        $schedule->save();
+
+        return redirect(route('schedules.index'));
     }
 
     /**
