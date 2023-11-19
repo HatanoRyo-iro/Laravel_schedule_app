@@ -55,6 +55,7 @@ class ScheduleController extends Controller
             'end_time.after' => '終了時間は開始時間より後の時刻を選択してください',
         ]);
         $schedule = new Schedule();
+        $schedule->user_id = \Auth::id();
         $schedule->content = $request->content;
         $schedule->place = $request->place;
         $schedule->start_time = $request->start_time;
@@ -84,6 +85,7 @@ class ScheduleController extends Controller
     public function edit(Schedule $schedule)
     {
         // 編集
+        $this->authorize($schedule);
         $data = ['schedule' => $schedule];
         return view('schedules.edit', $data);
     }
@@ -98,6 +100,7 @@ class ScheduleController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         // 更新
+        $this->authorize($schedule);
         $this->validate($request, [
             'content' => 'required',
             'place' => 'required',
@@ -128,6 +131,7 @@ class ScheduleController extends Controller
     public function destroy(Schedule $schedule)
     {
         // 削除
+        $this->authorize($schedule);
         $schedule->delete();
         return redirect(route('schedules.index'));
     }
