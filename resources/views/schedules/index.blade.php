@@ -11,10 +11,7 @@
     <hr>
     <div class="schedule-content">{{ $schedule->content }}</div>
     <div class="schedule-place">{{ $schedule->place }}</div>
-    <div class="schedule-time">{{ $schedule->start_time }} ~ {{ $schedule->end_time }}</div>
-    <div class="schedule-create-user">
-        作成者：{{ $schedule->user->name }}
-    </div>
+    <div class="schedule-time">{{ \Carbon\Carbon::parse($schedule->start_time)->format('Y/m/d H:i') }} ~ {{ \Carbon\Carbon::parse($schedule->end_time)->format('Y/m/d H:i') }}</div>
     @can('update', $schedule)
     <div class="schedule-edit">
         <a href="{{ route('schedules.edit', $schedule) }}">編集</a>
