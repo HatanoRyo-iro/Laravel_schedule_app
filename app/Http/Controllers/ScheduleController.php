@@ -14,8 +14,8 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //　Scheduleモデルの全件取得
-        $schedules = Schedule::all();
+        //　自分の予定一覧を取得
+        $schedules = \Auth::user()->schedules()->orderByDesc('created_at')->get();
         $data = ['schedules' => $schedules];
         return view('schedules.index', $data);
     }
