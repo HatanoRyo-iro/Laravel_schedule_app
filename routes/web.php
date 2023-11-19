@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,13 @@ use App\Http\Controllers\ScheduleController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', function () {
+        return redirect()->route('schedules.index');
+    })->name('schedule');
+    Route::resource('/schedules', ScheduleController::class);
 });
 
 Route::get('/schedules', [ScheduleController::class, 'index'])->name('schedules.index');
