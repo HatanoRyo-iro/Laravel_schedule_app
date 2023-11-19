@@ -1,5 +1,10 @@
 @extends('templates.template')
 @section('contents')
+<p>ようこそ，{{ Auth::user()->name }}さん</p>
+<form action="{{ route('logout') }}" method="post">
+    @csrf
+    <button type="submit">ログアウト</button>
+</form>
 <p><a href="{{ route('schedules.create') }}">予定を追加する</a></p>
 @foreach ($schedules as $schedule)
 <article class="schedule-item">
