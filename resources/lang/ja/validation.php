@@ -31,7 +31,7 @@ return [
         'array'   => ':attributeは、:min個から:max個の間で指定してください。',
     ],
     'boolean'              => ':attributeは、trueかfalseを指定してください。',
-    'confirmed'            => ':attributeと、確認フィールドとが、一致していません。',
+    'confirmed'            => ':attributeが一致していません.',
     'current_password'     => 'パスワードが正しくありません。',
     'date'                 => ':attributeには有効な日付を指定してください。',
     'date_equals'          => ':attributeには、:dateと同じ日付けを指定してください。',
@@ -140,6 +140,19 @@ return [
         '属性名' => [
             'ルール名' => 'カスタムメッセージ',
         ],
+        'name' => [
+            'required' => '名前を入力してください.',
+        ],
+        'email' => [
+            'required' => 'メールアドレスを入力してください.',
+        ],
+        'password' => [
+            'required' => 'パスワードを入力してください.',
+        ],
+        'confirmed' => [
+            'required' => 'パスワードと一致しません',
+        ],
+
     ],
 
     /*
@@ -153,6 +166,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+    ],
 
+    
+   
 ];
