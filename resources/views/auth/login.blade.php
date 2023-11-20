@@ -11,6 +11,10 @@
         <dd><input type="password" name="password"></dd>
     </dl>
     <button type="submit">ログイン</button>
-    <a href="/">キャンセル</a>
+    <hr>
+    <div class="register">
+        <p>まだアカウントを持っていませんか？</p>
+        <a href="{{ route('register') }}">新規作成はこちら</a>
+    </div>
 </form>
 @endsection()

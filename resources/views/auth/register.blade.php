@@ -1,6 +1,6 @@
 @extends('templates.template')
 @section('contents')
-<h1>スケジュール管理アプリ</h1>
+<h1>新規作成</h1>
 @include('display_errors.error')
 <form action="{{ route('register') }}" method="post">
     @csrf 
@@ -15,6 +15,9 @@
         <dd><input type="password" name="password_confirmation" placeholder="もう一度入力"></dd>
     </dl>
 <button type="submit">登録する</button>
-<a href="/">キャンセル</a>
+<hr>
+<div class="login">
+    <p>すでにアカウントをお持ちですか？</p>
+    <a href="{{ route('login') }}">ログインはこちら</a>
 </form>
 @endsection()
